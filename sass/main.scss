@@ -1,0 +1,750 @@
+$blueTravel: #137ECB;
+$lightBlueTravel: #60B6F4;
+$orangeTravel : #FD9704;
+
+@mixin title-section($textAlign: center) {
+  h1 {
+    font-size: 35px;
+    color: $orangeTravel;
+    font-weight: 600;
+    text-align: $textAlign;
+
+    span {
+      color: $blueTravel;
+    }
+  }
+}
+
+@mixin badge($top, $backgroundColor: white, $color: $blueTravel) {
+  .badge-img {
+    content: '';
+    display: block;
+    position: absolute;
+    padding: 0.875em 1.875em 0.875em 1.875em; // 14px 30px 14px 30px
+    top: $top;
+    left: 0;
+    background-color: $backgroundColor;
+    color: $color;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-size: 0.875em;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}
+
+@mixin overlay($background, $borderRad: 0) {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $background;
+    border-radius: $borderRad;
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+// Navbar
+.navbar {
+  z-index: 999;
+
+  .navbar-brand {
+    color: $blueTravel;
+    transition: 0.3s;
+    font-weight: 600;
+  }
+
+  .navbar-brand:hover {
+    color: #0077A5;
+
+    .fas {
+      transform: rotateX(360deg);
+      transition: 0.6s ease-in-out;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      font-size: 1.125rem;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: $blueTravel;
+      transform: translateX(10px);
+    }
+  }
+}
+
+.jumbotron {
+  background-image: url("../img/hero-image.PNG");
+  background-size: cover;
+  height: 650px;
+  // margin-top: -56px;
+  position: relative;
+
+  .container {
+    position: relative;
+    z-index: 1;
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 60px;
+      font-weight: 800;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+
+      // span:hover {
+      //   display: inline-block;
+      //   transform: scale(1.1);
+      //   transition: 0.3s;
+      //   cursor: pointer;
+      // }
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Jumbotron
+.jumbotron::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0) 80%, rgba(0, 0, 0, 0.3) 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+// Find Trip
+.find-trip {
+  margin-top: -100px;
+  border-radius: 25px;
+  padding: 45px 40px 45px 40px;
+  margin-bottom: 100px;
+
+  .form-row {
+    input {
+      text-align: center !important;
+    }
+
+    .btn-find-trip {
+      background-color: $orangeTravel;
+      color: white;
+      border-radius: 0 20px 20px 0;
+    }
+
+    .input-go {
+      border-radius: 20px 0 0 20px;
+    }
+
+    .input-date {
+      border-radius: 0;
+    }
+
+    select, option {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-align: center;
+      text-align-last: center;
+      border-radius: 0;
+    }
+
+    .form-control, .form-control::placeholder {
+      color: #949494 !important;
+    }
+  }
+}
+
+// Top Recommendation
+.top-recommendation {
+  margin-bottom: 80px;
+  @include title-section();
+
+  // Card
+  .card {
+    border-radius: 15px !important;
+    // box-shadow: 25px 25px 80px rgba(81, 81, 81, 0.16);
+
+    .card-img, .card-img-top {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .badge-img {
+      content: '';
+      display: block;
+      position: absolute;
+      padding: 6px 12px 6px 20px;
+      top: 25px;
+      right: 0;
+      background-color: $orangeTravel;
+      color: white;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      font-size: 0.875em;
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .card-body {
+      .card-title {
+        font-size: 1.125em;
+        font-weight: 600;
+      }
+
+      .card-text {
+        font-size: .875em !important;
+        color: #7C7C7C !important;
+      }
+
+      .card-link {
+        font-size: .9375em;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .carousel-indicators {
+    bottom: -45px;
+
+    li {
+      background-color: #5376F0;
+    }
+  }
+}
+
+// Mobile Section
+.mobile {
+  background-image: url("../img/mobile/mobile.png");
+  background-size: cover;
+  padding: 80px 0 80px 0;
+  color: white;
+  position: relative;
+  margin-bottom: 70px;
+  font-size: 13px;
+
+  @include overlay(linear-gradient(180deg, rgba(38, 153, 236, 0) 0.17%, #1e97e38f 99.83%));
+
+  .container {
+    position: relative;
+    z-index: 1;
+
+    h1 {
+      font-size: 3.125em;
+      font-weight: 600;
+    }
+  
+    p {
+      font-size: 1.125em;
+      line-height: 1.625em;
+      font-weight: 400;
+      text-align: justify;
+    }
+
+    .mobile-img {
+      position: absolute;
+      right: 0;
+      bottom: 0px;
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// Gallery Section
+.gallery {
+  margin-bottom: 100px;
+  position: relative;
+  @include title-section();
+
+  .container .nav-link {
+    color: $lightBlueTravel;
+    border: 0;
+    transition: 0.25s;
+
+    &:hover, &.active {
+      color: $blueTravel;
+      font-weight: 600;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      padding-top: 8px;
+      border-bottom: 2.5px solid $blueTravel !important;
+      transform: scaleX(0);
+      transition: transform 0.25s ease-in-out;
+    }
+
+    &.active::after {
+      transform: scaleX(1.5);
+    }
+  }
+
+  .tab-content {
+    .left-img, .top-right-img, .bottom-left-img {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      @include badge(50px);
+      
+      & img {
+        transition: transform 0.5s ease;
+      }
+  
+      &:hover img {
+        transform: scale(1.08);
+      }
+    }
+
+    .bottom-right-img {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      @include overlay(rgba(19, 126, 203, 0.69), 10px);
+
+      .see-more {
+        position: absolute;
+        color: white;
+        left: 50%;
+        margin-left: calc(4.78em / -2);
+        top: 50%;
+        margin-top: calc(2.9em / -2);
+        z-index: 1;
+      }
+
+      & img, & .see-more {
+        transition: transform 0.5s ease;
+      }
+
+      &:hover img, &:hover .see-more {
+        transform: scale(1.08);
+      }
+    }
+
+    img {
+      display: inline-flex;
+      // border-radius: 10px;
+    }
+
+    & #mount {
+      .left-img, .top-right-img, .bottom-left-img {
+        @include badge(50px,white, #d99863);
+      }
+
+      .bottom-right-img {
+        @include overlay(rgba(217, 152, 99, 0.69), 10px);
+      }
+    }
+
+    & #waterfall {
+      .left-img, .top-right-img, .bottom-left-img {
+        @include badge(50px, white, #323f45);
+      }
+
+      .bottom-right-img {
+        @include overlay(rgba(50, 63, 69, 0.836), 10px);
+      }
+    }
+
+    & #forest {
+      .left-img, .top-right-img, .bottom-left-img {
+        @include badge(50px, white, #067A4F);
+      }
+
+      .bottom-right-img {
+        @include overlay(rgba(6, 122, 79, 0.7), 10px);
+      }
+    }
+
+    & #lake {
+      .left-img, .top-right-img, .bottom-left-img {
+        @include badge(50px, white, #289cc0);
+      }
+
+      .bottom-right-img {
+        @include overlay(rgba(40, 156, 192, 0.7), 10px);
+      }
+    }
+  } 
+}
+
+.about {
+  font-size: 13px;
+  margin-bottom: 70px;
+  @include title-section(left);
+
+  p {
+    font-size: 1.125em;
+    text-align: justify;
+    color: $blueTravel;
+  }
+  
+  a {
+    text-decoration: none;
+    color: $orangeTravel;
+  }
+
+  .video-about {
+    // max-height: 488px;
+    // max-width: 482px;
+    // position: relative;
+    transition: 0.5s ease;
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      margin-top: calc(6em / -2);
+      left: 50%;
+      margin-left: calc(6em / -2);
+      cursor: pointer;
+    }
+  }
+
+  .embed-video {
+    max-width: 482px;
+    max-height: 488px;
+  }
+
+}
+
+.contact {
+  font-size: 13px;
+  color: $blueTravel;
+  background-color: rgba(0, 122, 210, 0.07);
+  position: relative;
+  
+  @include title-section(left);
+
+  img {
+    border-radius: 15px;
+  }
+
+  p {
+    font-size: 1.125em;
+  }
+
+  .input-group {
+    input {
+      font-size: 13px;
+      padding: 1.5em .75em;
+      border-color: $blueTravel;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      background-color: transparent;
+
+      &::placeholder {
+        color: #9ED7FF;
+      }
+    }
+
+    .btn-contact {
+      font-size: 13px;
+      background-color: $orangeTravel;
+      color: white;
+      font-weight: 400;
+      padding-left: 2.375em;
+      padding-right: 2.375em;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    
+  }
+
+  
+
+  
+}
+
+.footer {
+  background-color: $blueTravel;
+  color: white;
+
+  .social-media i {
+    cursor: pointer;
+  }
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  .nav .nav-link {
+    color: white;
+    font-size: 1.125em;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+
+
+// Khusus Ukuran Layar Maksimal Extra Small
+@media (max-width: 576px) {
+  .jumbotron {
+    height: 600px;
+  }
+
+  .find-trip {
+    padding-top: 35px;
+    padding-bottom: 35px;
+
+    .form-row {
+      .btn-find-trip {
+        border-radius: 0 0 20px 20px;
+      }
+
+      .input-go {
+        border-radius: 20px 0 0 0;
+      }
+
+      .input-date {
+        border-radius: 0;
+      }
+
+      select {
+        border-radius: 0 20px 0 0;
+      }
+    }
+  }
+
+  .top-recommendation {
+    .carousel {
+      padding: 1.5rem;
+    }
+
+    .carousel-indicators {
+      bottom: -20px;
+    }
+  }
+
+  .mobile {
+    .container {
+      .mobile-img {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .gallery .tab-content,
+  .gallery .tab-content #mount,
+  .gallery .tab-content #waterfall,
+  .gallery .tab-content #forest,
+  .gallery .tab-content #lake {
+    font-size: 12px;
+
+    .left-img, .top-right-img, .bottom-left-img {
+      .badge-img {
+        top: 20px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .top-recommendation {
+    margin-bottom: 150px;
+
+    .carousel .card {
+      font-size: 13px;
+    }
+  }
+
+  .mobile .container .mobile-img {
+    top: -130px;
+  }
+
+  .about {
+    margin-bottom: 150px;
+  }
+
+  .contact {
+    margin-top: 180px;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      background: url(../img/contact/Queen.png) no-repeat;
+      width: 100%;
+      height: 100%;
+      top: -280px;
+      left: -150px;
+      transform: scale(0.7);
+    }
+
+    .contact-row {
+      position: relative;
+      top: -28px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    background-color: transparent !important;
+    transition: 0.3s ease-out;
+
+    .navbar-brand {
+      color: white;
+    }
+
+    .navbar-brand:hover {
+      color: white;
+    }
+
+    &.nav-colored {
+      // background-color: #0077A5 !important;
+      background-color: white !important;
+      box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+
+      .navbar-brand {
+        color: #0077A5;
+      }
+
+      .nav-link {
+        color: #0077A5 !important;
+      }
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      margin-right: 43px;
+      color: white !important;
+    }
+
+    .nav-link:hover {
+      color: #0077A5 !important;
+      transform: scale(1.1) !important;
+    }
+  }
+
+  .jumbotron {
+    .container {
+      h1 {
+        font-size: 75px;
+      }
+
+      p {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .find-trip {
+    padding: 45px 80px 45px 80px;
+  }
+
+  .top-recommendation, .gallery, .about, .contact {
+    h1 {
+      font-size: 50px;
+    }
+
+    .carousel {
+      .card {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .mobile {
+    font-size: 16px;
+  }
+
+  .gallery .tab-content,
+  .gallery .tab-content #mount,
+  .gallery .tab-content #waterfall,
+  .gallery .tab-content #forest,
+  .gallery .tab-content #lake {
+    font-size: 16px;
+
+    .left-img, .top-right-img, .bottom-left-img {
+      .badge-img {
+        top: 50px;
+      }
+    }
+  }
+
+  .about, .contact {
+    font-size: 16px;
+  }
+
+  .about .embed-video {
+    width: 482px;
+    height: 488px;
+  }
+
+  .contact .input-group {
+    input, .btn-contact {
+      font-size: 16px;
+    }
+  }
+
+  .contact {
+    margin-top: 250px;
+
+    &::before {
+      top: -330px;
+      left: -100px;
+      transform: scale(0.9);
+    }
+
+    .contact-row {
+      top: -85px;
+    }
+  }
+
+  .footer .nav .nav-link {
+    margin-right: 35px;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mobile {
+    margin-bottom: 140px;
+  }
+
+  .gallery::before {
+    content: '';
+    position: absolute;
+    background-image: url(../img/dot.png);
+    width: 16.875em;
+    height: 22em;
+    right: 65px;
+    bottom: 90px;
+  }
+
+  .contact {
+    &::before {
+      top: -390px;
+      left: -55px;
+      transform: scale(1);
+    }
+
+    .contact-row {
+      top: -110px;
+    }
+  }
+}
