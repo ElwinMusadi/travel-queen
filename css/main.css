@@ -40,7 +40,7 @@ body {
 }
 
 .jumbotron {
-  background-image: url("../img/hero-image.PNG");
+  background-image: url("../img/hero-image.png");
   background-size: cover;
   height: 650px;
   position: relative;
