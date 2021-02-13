@@ -10,7 +10,7 @@ window.onscroll = () => {
   }
 }
 
-$('.nav-link').on('click', function(e) {
+$('.page-scroll').on('click', function(e) {
   
   const tujuan = $(this).attr('href');
   const elemenTujuan = $(tujuan);
