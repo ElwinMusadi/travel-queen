@@ -642,6 +642,9 @@ body {
   .mobile .container .mobile-img {
     display: none;
   }
+  .footer {
+    font-size: 13px;
+  }
 }
 
 @media (min-width: 576px) {
